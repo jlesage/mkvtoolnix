@@ -309,10 +309,12 @@ Settings::load() {
   m_uiFontFamily                       = reg.value("uiFontFamily",    defaultFont.family()).toString();
   m_uiFontPointSize                    = reg.value("uiFontPointSize", defaultFont.pointSize()).toInt();
 
+#ifdef CHECK_FOR_UPDATES
   reg.beginGroup("updates");
   m_checkForUpdates                    = reg.value("checkForUpdates", true).toBool();
   m_lastUpdateCheck                    = reg.value("lastUpdateCheck", QDateTime{}).toDateTime();
   reg.endGroup();               // settings.updates
+#endif
   reg.endGroup();               // settings
 
   loadDefaults(reg, guiVersion);
@@ -550,10 +552,12 @@ Settings::save()
 
   reg.setValue("mediaInfoExe",                       m_mediaInfoExe);
 
+#ifdef CHECK_FOR_UPDATES
   reg.beginGroup("updates");
   reg.setValue("checkForUpdates",                    m_checkForUpdates);
   reg.setValue("lastUpdateCheck",                    m_lastUpdateCheck);
   reg.endGroup();               // settings.updates
+#endif
   reg.endGroup();               // settings
 
   saveDefaults(reg);

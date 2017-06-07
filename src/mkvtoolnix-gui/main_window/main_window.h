@@ -6,7 +6,9 @@
 #include <QMainWindow>
 
 #include "mkvtoolnix-gui/main_window/preferences_dialog.h"
+#ifdef CHECK_FOR_UPDATES
 #include "mkvtoolnix-gui/main_window/update_checker.h"
+#endif
 #include "mkvtoolnix-gui/util/installation_checker.h"
 
 class QEvent;
@@ -86,8 +88,10 @@ public slots:
   virtual void setToolSelectorVisibility();
   virtual void raiseAndActivate();
 
+#ifdef CHECK_FOR_UPDATES
   virtual void updateCheckFinished(UpdateCheckStatus status, mtx_release_version_t release);
   virtual void checkForUpdates();
+#endif
 
   virtual void displayInstallationProblems(Util::InstallationChecker::Problems const &problems);
 
@@ -100,7 +104,9 @@ public:                         // static
   static Jobs::Tool *jobTool();
   static WatchJobs::Tab *watchCurrentJobTab();
   static WatchJobs::Tool *watchJobTool();
+#ifdef CHECK_FOR_UPDATES
   static QString versionStringForSettings(version_number_t const &version);
+#endif
 
   static QIcon const & yesIcon();
   static QIcon const & noIcon();
@@ -117,7 +123,9 @@ protected:
 
   virtual boost::optional<bool> filterWheelEventForStrongFocus(QObject *watched, QEvent *event);
 
+#ifdef CHECK_FOR_UPDATES
   virtual void silentlyCheckForUpdates();
+#endif
   virtual void runCacheCleanupOncePerVersion() const;
 };
 

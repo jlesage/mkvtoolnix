@@ -43,7 +43,9 @@ PreferencesDialog::PreferencesDialog(QWidget *parent,
   Util::restoreWidgetGeometry(this);
 
   // GUI page
+#ifdef CHECK_FOR_UPDATES
   ui->cbGuiCheckForUpdates->setChecked(m_cfg.m_checkForUpdates);
+#endif
   ui->cbGuiDisableAnimations->setChecked(m_cfg.m_disableAnimations);
   ui->cbGuiShowToolSelector->setChecked(m_cfg.m_showToolSelector);
   ui->cbGuiWarnBeforeClosingModifiedTabs->setChecked(m_cfg.m_warnBeforeClosingModifiedTabs);
@@ -201,11 +203,13 @@ PreferencesDialog::setupPageSelector(Page pageToShow) {
 void
 PreferencesDialog::setupToolTips() {
   // GUI page
+#ifdef CHECK_FOR_UPDATES
   Util::setToolTip(ui->cbGuiCheckForUpdates,
                    Q("%1 %2 %3")
                    .arg(QY("If enabled the program will check online whether or not a new release of MKVToolNix is available on the home page."))
                    .arg(QY("This is done at startup and at most once within 24 hours."))
                    .arg(QY("No information is transmitted to the server.")));
+#endif
 
   Util::setToolTip(ui->cbGuiDisableAnimations, QY("If checked several short animations used throughout the program as visual clues for the user will be disabled."));
   Util::setToolTip(ui->cbGuiWarnBeforeClosingModifiedTabs,
@@ -630,7 +634,9 @@ PreferencesDialog::save() {
   m_cfg.m_tabPosition                        = static_cast<QTabWidget::TabPosition>(ui->cbGuiTabPositions->currentData().toInt());
   m_cfg.m_uiFontFamily                       = ui->fcbGuiFontFamily->currentFont().family();
   m_cfg.m_uiFontPointSize                    = ui->sbGuiFontPointSize->value();
+#ifdef CHECK_FOR_UPDATES
   m_cfg.m_checkForUpdates                    = ui->cbGuiCheckForUpdates->isChecked();
+#endif
   m_cfg.m_disableAnimations                  = ui->cbGuiDisableAnimations->isChecked();
   m_cfg.m_showToolSelector                   = ui->cbGuiShowToolSelector->isChecked();
   m_cfg.m_warnBeforeClosingModifiedTabs      = ui->cbGuiWarnBeforeClosingModifiedTabs->isChecked();

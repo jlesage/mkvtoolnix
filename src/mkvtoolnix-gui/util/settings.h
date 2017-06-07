@@ -153,8 +153,10 @@ public:
   int m_removeOldJobsDays;
   bool m_useDefaultJobDescription, m_showOutputOfAllJobs, m_switchToJobOutputAfterStarting, m_resetJobWarningErrorCountersOnExit;
 
+#ifdef CHECK_FOR_UPDATES
   bool m_checkForUpdates;
   QDateTime m_lastUpdateCheck;
+#endif
 
   bool m_disableAnimations, m_showToolSelector, m_warnBeforeClosingModifiedTabs, m_warnBeforeAbortingJobs, m_warnBeforeOverwriting, m_showMoveUpDownButtons;
   QString m_uiLocale, m_uiFontFamily;

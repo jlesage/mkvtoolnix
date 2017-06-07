@@ -8,7 +8,9 @@
 #include "common/version.h"
 #include "mkvtoolnix-gui/app.h"
 #include "mkvtoolnix-gui/jobs/job.h"
+#ifdef CHECK_FOR_UPDATES
 #include "mkvtoolnix-gui/main_window/update_checker.h"
+#endif
 #include "mkvtoolnix-gui/merge/source_file.h"
 #include "mkvtoolnix-gui/util/installation_checker.h"
 
@@ -27,7 +29,9 @@ registerMetaTypes() {
   qRegisterMetaType<QFileInfoList>("QFileInfoList");
   qRegisterMetaType<mtx_release_version_t>("mtx_release_version_t");
   qRegisterMetaType<std::shared_ptr<pugi::xml_document>>("std::shared_ptr<pugi::xml_document>");
+#ifdef CHECK_FOR_UPDATES
   qRegisterMetaType<UpdateCheckStatus>("UpdateCheckStatus");
+#endif
   qRegisterMetaType<Util::InstallationChecker::Problems>("Util::InstallationChecker::Problems");
 }
 

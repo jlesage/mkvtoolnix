@@ -173,7 +173,6 @@
     <addaction name="separator"/>
     <addaction name="actionHelpWebSite"/>
     <addaction name="separator"/>
-    <addaction name="actionHelpCheckForUpdates"/>
    </widget>
    <widget class="QMenu" name="menuJobQueue">
     <property name="title">
@@ -322,15 +321,6 @@
    </property>
    <property name="shortcut">
     <string>Ctrl+P</string>
-   </property>
-  </action>
-  <action name="actionHelpCheckForUpdates">
-   <property name="icon">
-    <iconset resource="../../qt_resources.qrc">
-     <normaloff>:/icons/16x16/system-software-update.png</normaloff>:/icons/16x16/system-software-update.png</iconset>
-   </property>
-   <property name="text">
-    <string>Check for &amp;updates</string>
    </property>
   </action>
   <action name="actionHeaderEditorOpen">

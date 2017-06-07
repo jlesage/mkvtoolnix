@@ -131,13 +131,6 @@
             </layout>
            </item>
            <item>
-            <widget class="QCheckBox" name="cbGuiCheckForUpdates">
-             <property name="text">
-              <string>Check online for available &amp;updates</string>
-             </property>
-            </widget>
-           </item>
-           <item>
             <widget class="QCheckBox" name="cbGuiDisableAnimations">
              <property name="text">
               <string>Disable ani&amp;mations</string>
@@ -1621,7 +1614,6 @@
   <tabstop>cbGuiInterfaceLanguage</tabstop>
   <tabstop>fcbGuiFontFamily</tabstop>
   <tabstop>sbGuiFontPointSize</tabstop>
-  <tabstop>cbGuiCheckForUpdates</tabstop>
   <tabstop>cbGuiDisableAnimations</tabstop>
   <tabstop>cbGuiTabPositions</tabstop>
   <tabstop>cbGuiShowToolSelector</tabstop>

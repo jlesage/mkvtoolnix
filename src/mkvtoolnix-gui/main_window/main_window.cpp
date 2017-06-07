@@ -19,7 +19,9 @@
 #include "mkvtoolnix-gui/forms/main_window/main_window.h"
 #include "mkvtoolnix-gui/header_editor/tool.h"
 #include "mkvtoolnix-gui/jobs/tool.h"
+#ifdef CHECK_FOR_UPDATES
 #include "mkvtoolnix-gui/main_window/available_update_info_dialog.h"
+#endif
 #include "mkvtoolnix-gui/main_window/main_window.h"
 #include "mkvtoolnix-gui/main_window/preferences_dialog.h"
 #include "mkvtoolnix-gui/main_window/status_bar_progress_widget.h"
@@ -95,7 +97,9 @@ MainWindow::MainWindow(QWidget *parent)
 
   jobTool()->loadAndStart();
 
+#ifdef CHECK_FOR_UPDATES
   silentlyCheckForUpdates();
+#endif
 
 #if defined(SYS_WINDOWS)
   new TaskbarProgress{this};
@@ -159,7 +163,9 @@ MainWindow::setupMenu() {
 
   connect(this,                                   &MainWindow::preferencesChanged, this, &MainWindow::setToolSelectorVisibility);
 
+#ifdef CHECK_FOR_UPDATES
   connect(d->ui->actionHelpCheckForUpdates,       &QAction::triggered,             this, &MainWindow::checkForUpdates);
+#endif
 }
 
 void
@@ -437,6 +443,7 @@ MainWindow::editPreferencesAndShowPage(PreferencesDialog::Page page) {
   emit preferencesChanged();
 }
 
+#ifdef CHECK_FOR_UPDATES
 void
 MainWindow::checkForUpdates() {
   AvailableUpdateInfoDialog dlg{this};
@@ -492,6 +499,7 @@ MainWindow::updateCheckFinished(UpdateCheckStatus status,
   AvailableUpdateInfoDialog dlg{this};
   dlg.exec();
 }
+#endif
 
 void
 MainWindow::showIconMovingToTool(QString const &pixmapName,
